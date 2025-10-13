@@ -3,7 +3,7 @@ Feature: OrangeHRM User Login
   Background:
     Given a new user account is created
     And the user is on the login page
-@ready
+
   Scenario: Successful login with valid credentials
     Given the user is on the OrangeHRM login page
       | Name | Email            | Role      |
