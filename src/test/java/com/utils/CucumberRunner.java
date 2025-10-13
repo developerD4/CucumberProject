@@ -9,7 +9,6 @@ import io.cucumber.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 	features = "./src/test/resources",
-	glue = {"stepDefinitions"},
 	plugin = {
 					"pretty", "html:target/htmltestreport.html",
 					"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
