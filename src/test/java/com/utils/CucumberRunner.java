@@ -1,4 +1,4 @@
-package com.steps;
+package com.utils;
 
 import org.junit.runner.RunWith;
 
@@ -10,7 +10,8 @@ import io.cucumber.junit.Cucumber;
 @CucumberOptions(
 	features = "./src/test/resources",
 	plugin = {
-					"pretty", "html:target/htmltestreport.html"
+					"pretty", "html:target/htmltestreport.html",
+					"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
 			},
 	tags="@ready"
 )
