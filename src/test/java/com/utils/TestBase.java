@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 //import org.testng.annotations.AfterMethod;
 //import org.testng.annotations.BeforeMethod;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -19,7 +20,12 @@ public class TestBase {
     @Before
     public void setUp() {
         System.out.println(">>> Launching browser and navigating to OrangeHRM...");
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        driver = new ChromeDriver(options);
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
