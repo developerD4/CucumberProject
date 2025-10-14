@@ -3,6 +3,7 @@ package com.steps;
 import org.openqa.selenium.WebDriver;
 
 import com.pages.LoginPage;
+import com.utils.TestBase;
 
 //import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
@@ -12,7 +13,7 @@ import io.qameta.allure.Step;
 
 public class LoginSteps {
 
-		WebDriver driver;
+		WebDriver driver = TestBase.getDriver();
 		public String baseURL = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
 	    
 		@Given("the user is on the OrangeHRM login page")
@@ -26,6 +27,7 @@ public class LoginSteps {
 		public void the_user_enters_a_valid_username_and_password(String username, String password) {
 		System.out.println(username + " " + password);
 		LoginPage lp = new LoginPage(driver);
+		driver.get(baseURL);
 		lp.loginCre(username, password);
 		}
 		
@@ -35,8 +37,6 @@ public class LoginSteps {
 		public void the_user_should_be_redirected_to_the_orange_hrm_dashboard(String Welcome) {
 		    System.out.println("The user on OrangeHRM dashboard with " + Welcome);
 		}
-		
-		
 }
 
 

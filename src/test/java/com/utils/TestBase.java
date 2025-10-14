@@ -22,9 +22,16 @@ public class TestBase {
 	}
 	@AfterMethod
 	public void tearDown() {
-		driver.quit();
+		 if (driver != null) {
+	            driver.quit();
+	            driver = null;
+	        }
 	}
-	public WebDriver getDriver() {
-		return driver;
+	public static WebDriver getDriver() {
+		if (driver == null) {
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+        }
+        return driver;
 	}
 }
