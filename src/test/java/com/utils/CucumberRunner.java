@@ -12,8 +12,7 @@ import io.cucumber.junit.CucumberOptions;
                 "pretty",                            
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm" 
                 
-        },
-        monochrome = true,                            
+        },                          
         tags="@ready"
 )
 public class CucumberRunner {
