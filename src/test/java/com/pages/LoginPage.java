@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import io.qameta.allure.Step;
+//import io.qameta.allure.Step;
 import java.time.Duration;
 
 public class LoginPage {
@@ -28,33 +28,33 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    @Step("Enter username: {0}")
+//    @Step("Enter username: {0}")
     public void setName(String user) {
         wait.until(ExpectedConditions.visibilityOf(usernameId));
         usernameId.clear();
         usernameId.sendKeys(user);
     }
 
-    @Step("Enter password: {0}")
+//    @Step("Enter password: {0}")
     public void setPassword(String passw) {
         wait.until(ExpectedConditions.visibilityOf(passwordId));
         passwordId.clear();
         passwordId.sendKeys(passw);
     }
 
-    @Step("Click on Login button")
+//    @Step("Click on Login button")
     public void clickLogin() {
         wait.until(ExpectedConditions.elementToBeClickable(loginBtn)).click();
     }
 
-    @Step("Login with username: {0} and password: {1}")
+//    @Step("Login with username: {0} and password: {1}")
     public void loginCre(String username, String password) {
         setName(username);
         setPassword(password);
         clickLogin();
     }
 
-    @Step("Get login page title")
+//    @Step("Get login page title")
     public String siteTitle() {
         return driver.getTitle();
     }
