@@ -1,23 +1,23 @@
 package com.steps;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.pages.LoginPage;
+import com.test.CucumberHooks1;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LoginSteps {
 
-    WebDriver driver;
-    LoginPage lp;
+    WebDriver driver = CucumberHooks1.getDriver();
+    LoginPage lp = new LoginPage(driver);
+    
 
     @Given("the user is on the OrangeHRM login page")
     public void the_user_is_on_the_orange_hrm_login_page() { 
-    	driver = new ChromeDriver();
-    	driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-        lp = new LoginPage(driver);           
+    	driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");          
         System.out.println(lp.siteTitle());
         System.out.println("Login Page Title displayed");
     }
