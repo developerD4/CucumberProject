@@ -6,19 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import io.qameta.allure.Step;
 import java.time.Duration;
 
 public class LoginPage {
     WebDriver driver;
     WebDriverWait wait;
-
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        PageFactory.initElements(driver, this);
-    }
 
     @FindBy(name = "username")
     private WebElement usernameId;
@@ -28,6 +21,12 @@ public class LoginPage {
 
     @FindBy(tagName = "button")
     private WebElement loginBtn;
+
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // ✅ must initialize wait
+        PageFactory.initElements(driver, this);
+    }
 
     @Step("Enter username: {0}")
     public void setName(String user) {
@@ -45,7 +44,7 @@ public class LoginPage {
 
     @Step("Click on Login button")
     public void clickLogin() {
-        loginBtn.click();
+        wait.until(ExpectedConditions.elementToBeClickable(loginBtn)).click();
     }
 
     @Step("Login with username: {0} and password: {1}")
@@ -56,10 +55,11 @@ public class LoginPage {
     }
 
     @Step("Get login page title")
-    public String getTitle() {
+    public String siteTitle() {
         return driver.getTitle();
     }
 }
+
 
 
 //WebElement usernameId = driver.findElement(By.name("username"));

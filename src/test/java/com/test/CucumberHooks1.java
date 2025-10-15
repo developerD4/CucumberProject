@@ -9,16 +9,15 @@ import io.cucumber.java.Before;
 
 public class CucumberHooks1 {
 
-	static WebDriver driver;
-	public String baseURL = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
+	public static WebDriver driver;
     
 	@Before
     public void beforeScenario() {
-        System.out.println("=== Before Scenario: Initialize test data or environment ===");
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.get(baseURL);
+      System.out.println("=== Before Scenario: Initialize test data or environment ===");
+//      driver = new ChromeDriver();
+//      driver.manage().window().maximize();
+//      driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//      driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
 
     @After
@@ -26,4 +25,8 @@ public class CucumberHooks1 {
         System.out.println("=== After Scenario: Clean up test data or reset environment ===");
         driver.quit();
     }
+    
+	public static WebDriver getDriver() {
+		return driver;
+	}
 }
