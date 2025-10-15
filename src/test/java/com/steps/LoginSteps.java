@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.pages.LoginPage;
-import com.test.CucumberHooks1;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -34,6 +32,7 @@ public class LoginSteps {
     public void the_user_should_be_redirected_to_the_orange_hrm_dashboard(String welcomeMsg) {
         // You can add verification step here
         System.out.println("User on Dashboard: " + welcomeMsg);
+        driver.quit();
     }
 }
 
